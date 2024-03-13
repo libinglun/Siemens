@@ -16,9 +16,11 @@ class Airport:
 class AirportLandingSystem:
     def __init__(self, airports: list[Airport], waiting_interval=60):
         self.airports: dict[str: Airport] = {airport.id: airport for airport in airports}
+        # TODO: waiting_interval might be Airport's attribute
         self.waiting_interval: int = waiting_interval
 
     def request_landing(self, airport_id: str) -> tuple[bool, int]:
+        """Check if it is possible to land at the input airport"""
         if airport_id not in self.airports.keys():
             return False, 0
 
