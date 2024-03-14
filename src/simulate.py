@@ -27,15 +27,15 @@ def simulate_landing_system(system: AirportLandingSystem):
         else:
             print(f"-----Landing is not possible. Please Wait for {remain_time} seconds.")
             count_down(remain_time)
-            can_land, _ = system.request_landing(airport_id)
-            if can_land:
+            new_can_land, _ = system.request_landing(airport_id)
+            if new_can_land:
                 print(f"-----Landing at {airport_id} is confirmed after waiting.")
             else:
                 raise ValueError('Landing failed after waiting')
 
 if __name__ == '__main__':
     airports_id = ["LGW", "EMA", "MAN"]
-    system = AirportLandingSystem([Airport(name) for name in airports_id], waiting_interval=20)
+    system = AirportLandingSystem([Airport(name) for name in airports_id], waiting_interval=10)
 
     simulate_landing_system(system)
 
